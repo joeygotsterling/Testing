@@ -10,6 +10,10 @@ while x < 1.0:
     stops.append(f'<stop offset="{x:.3f}" stop-color="#fff" stop-opacity="{random.choice([0.05,0.1,0.15,0.55,0.8,1.0]):.2f}"/>')
     x += random.uniform(0.012, 0.045)
 
+TEXT = "RACKETS&RHYTHMS"
+N = len(TEXT)
+WORD = "".join(f'<tspan font-size="{27 - 14*i/(N-1):.1f}" letter-spacing="{14 - 9*i/(N-1):.1f}">{c.replace("&","&amp;")}</tspan>' for i, c in enumerate(TEXT))
+
 def body(neck_ctrl_y):
     return (f"M245 58 Q300 {neck_ctrl_y} 355 58 L430 80 C480 110 520 250 545 560 L495 578 "
             "C480 420 465 320 450 255 C448 380 446 500 444 605 Q300 616 156 605 "
@@ -29,8 +33,14 @@ def view(vid, neck_ctrl_y, front):
       <rect width="600" height="720" fill="url(#pin)" mask="url(#bandmask)" opacity=".2"/>
       <rect width="600" height="720" fill="url(#vfade)"/>
       <!-- sleeve strips -->
-      <path d="M205 75 C150 120 112 260 88 566" stroke="#fff" stroke-width="24" fill="none"/>
-      <path d="M395 75 C450 120 488 260 512 566" stroke="#fff" stroke-width="24" fill="none"/>
+      <path d="M180 80 C124 128 84 264 63 566" stroke="#fff" stroke-width="5" fill="none"/>
+      <path d="M420 80 C476 128 516 264 537 566" stroke="#fff" stroke-width="5" fill="none"/>
+      <path id="tl-{vid}" d="M190 92 C134 138 95 270 73 560" fill="none"/>
+      <path id="tr-{vid}" d="M410 92 C466 138 505 270 527 560" fill="none"/>
+      <g font-family="'DIN Condensed','Arial Narrow','Liberation Sans Narrow','Liberation Sans',sans-serif" font-weight="700" fill="#fff">
+        <text><textPath href="#tl-{vid}" startOffset="22">{WORD}</textPath></text>
+        <text dominant-baseline="hanging"><textPath href="#tr-{vid}" startOffset="22">{WORD}</textPath></text>
+      </g>
       <!-- cuffs -->
       <path d="M55 560 L105 578 L101 606 L50 588 Z" fill="#000"/>
       <path d="M545 560 L495 578 L499 606 L550 588 Z" fill="#000"/>
