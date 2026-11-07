@@ -24,7 +24,7 @@ def top(vid, front):
             '<line x1="300" y1="38" x2="300" y2="630" stroke="#000" stroke-width="1.4" stroke-dasharray="1.5 1.5"/>'
             '<rect x="295.5" y="40" width="9" height="20" rx="2" fill="#ddd" stroke="#888"/>'
             '<g stroke="#9a9a9a" stroke-width="2" fill="none"><path d="M212 455 L224 545"/><path d="M388 455 L376 545"/></g>') if front else \
-           '<path d="M300 64 L300 598" stroke="#fff" stroke-opacity=".12" stroke-width="1" stroke-dasharray="3 3"/>'
+           '<path d="M300 64 L300 625" stroke="#fff" stroke-opacity=".12" stroke-width="1" stroke-dasharray="3 3"/>'
     logo_el = img(352, 128, 44) if front else img(287, 80, 26, .9)
     ny = 70 if front else 64
     return f'''
@@ -38,17 +38,16 @@ def top(vid, front):
       <rect width="600" height="720" fill="url(#vfade)"/>
       <path d="M180 80 C124 128 84 264 63 566" stroke="#fff" stroke-width="5" fill="none"/>
       <path d="M420 80 C476 128 516 264 537 566" stroke="#fff" stroke-width="5" fill="none"/>
-      <path d="M55 560 L105 578 L101 608 L50 590 Z" fill="url(#rib)"/>
-      <path d="M545 560 L495 578 L499 608 L550 590 Z" fill="url(#rib)"/>
-      <rect x="140" y="596" width="320" height="40" fill="url(#rib)"/>
-      <line x1="150" y1="597" x2="450" y2="597" stroke="#444" stroke-width="1"/>
+      <g stroke="#fff" stroke-opacity=".3" stroke-width="1" stroke-dasharray="3 3" fill="none">
+        <path d="M58 548 L106 565"/><path d="M542 548 L494 565"/><path d="M150 612 Q300 621 450 612"/>
+      </g>
       <g stroke="#fff" stroke-width="3" fill="none">
-        <path d="M262 {ny} Q200 150 152 255 C190 350 198 470 186 597"/>
-        <path d="M338 {ny} Q400 150 448 255 C410 350 402 470 414 597"/>
+        <path d="M262 {ny} Q200 150 152 255 C190 350 198 470 186 632"/>
+        <path d="M338 {ny} Q400 150 448 255 C410 350 402 470 414 632"/>
       </g>
       <g stroke="#fff" stroke-opacity=".35" stroke-width="1" stroke-dasharray="3 3" fill="none">
-        <path d="M262 {ny+6} Q205 152 158 255 C196 350 204 470 192 597"/>
-        <path d="M338 {ny+6} Q395 152 442 255 C404 350 396 470 408 597"/>
+        <path d="M262 {ny+6} Q205 152 158 255 C196 350 204 470 192 632"/>
+        <path d="M338 {ny+6} Q395 152 442 255 C404 350 396 470 408 632"/>
       </g>
       {zip_}
       {logo_el}
@@ -57,29 +56,37 @@ def top(vid, front):
     <path d="{p}" fill="none" stroke="#9a9a9a" stroke-width="1.5"/>
   </g>'''
 
-PANT = ("M40 40 L320 40 L322 78 C332 300 318 500 304 690 L216 694 C208 500 196 330 180 262 "
-        "C164 330 152 500 144 694 L56 690 C42 500 28 300 38 78 Z")
+PANT = ("M40 40 L320 40 L322 70 C332 300 314 520 290 668 L294 694 L226 698 L228 670 C210 500 196 330 180 262 "
+        "C164 330 150 500 132 670 L134 698 L66 694 L70 668 C46 520 28 300 38 70 Z")
 
 def pants(vid, front):
     extras = ('<g stroke="#777" stroke-width="2" fill="none"><path d="M62 92 L82 205"/><path d="M298 92 L278 205"/></g>'
-              '<path d="M180 78 L180 255" stroke="#333" stroke-width="1" stroke-dasharray="3 3"/>'
+              '<path d="M180 70 L180 255" stroke="#333" stroke-width="1" stroke-dasharray="3 3"/>'
               '<g stroke="#eee" stroke-width="2.2" fill="none" stroke-linecap="round">'
               '<path d="M172 62 C168 90 164 105 158 125"/><path d="M188 62 C192 90 196 105 202 125"/></g>'
               '<g fill="#eee"><circle cx="172" cy="60" r="3"/><circle cx="188" cy="60" r="3"/></g>'
               + img(228, 112, 38)) if front else \
              ('<path d="M44 120 Q180 140 316 120" stroke="#333" stroke-width="1" stroke-dasharray="3 3" fill="none"/>'
-              '<path d="M180 78 L180 255" stroke="#333" stroke-width="1" stroke-dasharray="3 3"/>'
+              '<path d="M180 70 L180 255" stroke="#333" stroke-width="1" stroke-dasharray="3 3"/>'
               '<path d="M232 150 L292 150" stroke="#777" stroke-width="2"/>')
     return f'''
   <g>
     <clipPath id="c-{vid}"><path d="{PANT}"/></clipPath>
     <path d="{PANT}" fill="#0b0b0b"/>
     <g clip-path="url(#c-{vid})">
-      <rect width="360" height="720" fill="url(#sheen)"/>
-      <rect x="0" y="40" width="360" height="38" fill="url(#rib)"/>
-      <line x1="38" y1="78" x2="322" y2="78" stroke="#444"/>
-      <rect x="0" y="672" width="360" height="30" fill="url(#rib)"/>
-      <g stroke="#bbb" stroke-width="2"><path d="M58 672 L55 630"/><path d="M302 672 L305 630"/></g>
+      <rect width="360" height="720" fill="url(#gloss)"/>
+      <rect width="360" height="720" fill="url(#vfade)"/>
+      <!-- smooth elastic waistband -->
+      <rect x="0" y="40" width="360" height="30" fill="#070707"/>
+      <g stroke="#fff" stroke-opacity=".28" stroke-width="1" stroke-dasharray="3 3" fill="none">
+        <path d="M40 46 L320 46"/><path d="M40 64 L320 64"/>
+        <!-- knee panel seams -->
+        <path d="M44 420 Q100 432 160 420"/><path d="M200 420 Q260 432 318 420"/>
+      </g>
+      <!-- gathered elastic cuffs -->
+      <g fill="#070707"><path d="M70 668 L132 670 L134 698 L66 694 Z"/><path d="M228 670 L290 668 L294 694 L226 698 Z"/></g>
+      <g stroke="#2a2a2a" stroke-width="1">{"".join(f'<path d="M{x} 671 L{x-1} 696"/>' for x in list(range(74,132,6))+list(range(232,292,6)))}</g>
+      <g stroke="#2a2a2a" stroke-width="1.2" fill="none"><path d="M70 668 Q100 660 132 670"/><path d="M228 670 Q260 660 290 668"/></g>
       {extras}
     </g>
     <path d="{PANT}" fill="none" stroke="#9a9a9a" stroke-width="1.5"/>
@@ -94,6 +101,13 @@ svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2080 820" width="
     <mask id="bandmask"><rect width="600" height="720" fill="url(#bandgrad)"/></mask>
     <linearGradient id="vfade" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#000" stop-opacity=".1"/><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".45"/>
+    </linearGradient>
+    <linearGradient id="gloss" x1="0" x2="360" y1="0" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".12" stop-color="#fff" stop-opacity=".16"/>
+      <stop offset=".18" stop-color="#fff" stop-opacity=".04"/><stop offset=".3" stop-color="#fff" stop-opacity=".1"/>
+      <stop offset=".42" stop-color="#fff" stop-opacity="0"/><stop offset=".58" stop-color="#fff" stop-opacity="0"/>
+      <stop offset=".7" stop-color="#fff" stop-opacity=".1"/><stop offset=".82" stop-color="#fff" stop-opacity=".04"/>
+      <stop offset=".88" stop-color="#fff" stop-opacity=".16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
     </linearGradient>
     <linearGradient id="sheen" x1="0" x2="360" y1="0" y2="0" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".2" stop-color="#fff" stop-opacity=".07"/>
