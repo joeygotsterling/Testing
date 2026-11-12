@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ashford &amp; Vale Law — When It Matters Most</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1c2e;
+    --navy-2: #162a44;
+    --gold: #c9a24a;
+    --gold-soft: #e6cf96;
+    --ink: #f4f1ea;
+    --muted: #a9b3c1;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Inter", system-ui, sans-serif;
+    background: #0a1420;
+    color: var(--ink);
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 32px 16px;
+  }
+  .ad {
+    width: 100%;
+    max-width: 960px;
+    background: linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 100%);
+    border: 1px solid rgba(201,162,74,.35);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,.5);
+    position: relative;
+  }
+  .ad::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(600px 300px at 85% 0%, rgba(201,162,74,.18), transparent 70%);
+    pointer-events: none;
+  }
+  .disclaimer-top {
+    font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--muted); text-align: right; padding: 14px 28px 0;
+  }
+  .hero { padding: 36px 56px 40px; position: relative; }
+  .brand { display: flex; align-items: center; gap: 14px; margin-bottom: 36px; }
+  .brand svg { width: 44px; height: 44px; }
+  .brand-name { font-family: "Playfair Display", serif; font-size: 22px; letter-spacing: .04em; }
+  .brand-name small { display: block; font-family: "Inter"; font-size: 11px; letter-spacing: .3em; color: var(--gold); text-transform: uppercase; }
+  h1 {
+    font-family: "Playfair Display", serif; font-weight: 800;
+    font-size: clamp(36px, 6vw, 64px); line-height: 1.05; max-width: 14ch;
+  }
+  h1 em { font-style: normal; color: var(--gold); }
+  .lede { margin-top: 20px; font-size: 18px; line-height: 1.6; color: #d6dbe3; max-width: 52ch; }
+  .cta-row { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .btn {
+    display: inline-block; text-decoration: none; font-weight: 600;
+    padding: 16px 28px; border-radius: 999px; font-size: 16px; transition: transform .15s, box-shadow .15s;
+  }
+  .btn-primary { background: var(--gold); color: var(--navy); box-shadow: 0 8px 24px rgba(201,162,74,.35); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(201,162,74,.45); }
+  .btn-ghost { border: 1px solid rgba(244,241,234,.35); color: var(--ink); }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold-soft); }
+  .practice {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid rgba(201,162,74,.25);
+    position: relative;
+  }
+  .practice div { padding: 26px 22px; border-right: 1px solid rgba(201,162,74,.15); }
+  .practice div:last-child { border-right: none; }
+  .practice h3 { font-family: "Playfair Display", serif; font-size: 18px; color: var(--gold-soft); margin-bottom: 6px; }
+  .practice p { font-size: 14px; color: var(--muted); line-height: 1.5; }
+  .promise {
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 18px;
+    padding: 22px 56px; background: rgba(0,0,0,.25); font-size: 14px; color: #d6dbe3;
+  }
+  .promise span::before { content: "✓ "; color: var(--gold); font-weight: 700; }
+  .fineprint { padding: 16px 56px 24px; font-size: 11px; line-height: 1.6; color: #7f8a99; }
+  @media (max-width: 760px) {
+    .hero { padding: 28px 24px 32px; }
+    .practice { grid-template-columns: 1fr 1fr; }
+    .practice div:nth-child(2) { border-right: none; }
+    .practice div:nth-child(-n+2) { border-bottom: 1px solid rgba(201,162,74,.15); }
+    .promise, .fineprint { padding-left: 24px; padding-right: 24px; }
+  }
+</style>
+</head>
+<body>
+  <article class="ad" aria-label="Advertisement for Ashford & Vale Law">
+    <p class="disclaimer-top">Attorney Advertising</p>
+
+    <section class="hero">
+      <div class="brand">
+        <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <circle cx="24" cy="24" r="23" stroke="#c9a24a" stroke-width="1.5"/>
+          <path d="M24 10v26M14 16h20M14 16l-5 10h10l-5-10zM34 16l-5 10h10l-5-10zM17 36h14"
+                stroke="#c9a24a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="brand-name">Ashford &amp; Vale<small>Attorneys at Law</small></div>
+      </div>
+
+      <h1>Your fight deserves a <em>serious</em> advocate.</h1>
+      <p class="lede">
+        Whether you've been injured, your business is under threat, or your family is facing a hard
+        transition, Ashford &amp; Vale stands beside you with straight answers, steady counsel, and
+        the preparation it takes to go the distance.
+      </p>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="tel:+15550100200">Free Consultation · (555) 010-0200</a>
+        <a class="btn btn-ghost" href="#">Tell Us About Your Case →</a>
+      </div>
+    </section>
+
+    <section class="practice" aria-label="Practice areas">
+      <div><h3>Personal Injury</h3><p>Car accidents, workplace injuries, and medical negligence.</p></div>
+      <div><h3>Business Law</h3><p>Contracts, disputes, formation, and partner conflicts.</p></div>
+      <div><h3>Family Law</h3><p>Divorce, custody, support, and mediation.</p></div>
+      <div><h3>Estate Planning</h3><p>Wills, trusts, probate, and powers of attorney.</p></div>
+    </section>
+
+    <div class="promise">
+      <span>Free, confidential first meeting</span>
+      <span>No fee unless we recover*</span>
+      <span>Evening &amp; weekend appointments</span>
+      <span>Hablamos español</span>
+    </div>
+
+    <p class="fineprint">
+      *Contingency fees apply to personal injury matters only; clients may be responsible for case costs.
+      Past results do not guarantee a similar outcome. This advertisement is for general information and is
+      not legal advice. Contacting the firm does not create an attorney–client relationship.
+      Ashford &amp; Vale is a fictional firm used for illustration.
+    </p>
+  </article>
+</body>
+</html>
